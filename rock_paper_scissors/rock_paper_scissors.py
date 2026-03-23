@@ -1,8 +1,3 @@
-# TODO
-"""
-5. Score based on who wins the round
-6. Once rounds over, winner declared
-"""
 import random
 
 # CPU selects one of the options randomly
