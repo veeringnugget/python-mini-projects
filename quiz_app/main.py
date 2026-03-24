@@ -9,7 +9,7 @@ def shuffle_answers(response, q):
     choices.append(response["results"][q]["correct_answer"])
     # Append incorrect answers to list
     for ans in response["results"][q]["incorrect_answers"]:
-        choices.append(ans)
+        choices.append(unescape(ans))
     # Shuffle the list randomly
     shuffle(choices)
     return choices
