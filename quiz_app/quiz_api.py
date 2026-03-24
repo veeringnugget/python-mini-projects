@@ -1,10 +1,5 @@
 """ Contains code pertaining to handling API call and response """
 
-"""
-TODO:
-2. API call
-3. Check response
-"""
 import requests
 
 # Initialise difficulty
