@@ -9,7 +9,7 @@ TODO:
 """
 
 def show_menu():
-    return input("1. Add Expenses\n2.View Expenses\n3. View Summary\n" \
-    "4. Delete Expense\n5. Exit")
+    return input("1. Add Expenses\n2. View Expenses\n3. View Summary\n" \
+    "4. Delete Expense\n5. Exit\n> ")
 
-
+show_menu()
