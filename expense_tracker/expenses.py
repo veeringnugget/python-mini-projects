@@ -63,7 +63,10 @@ def add_expenses():
 
 # Allows user to view all expenses added
 def view_expenses():
-    pass
+    with open('expenses.csv', "r") as file:
+        csv_reader = csv.DictReader(file)
+        for row in csv_reader:
+            print(f"Type: {row['type']} - Cost: £{row['cost']} - Description: {row['description']}")
 
 # Allows user to see summary of what has been added (counts, totals)
 def view_summary():
