@@ -6,9 +6,19 @@ TODO:
 6. Exit will close app
 """
 import csv
+import os
+
+HEADINGS = ['type', 'cost', 'description']
 
 # Main Code
 def main():
+
+    # Check if file exists
+    if not os.path.isfile('expenses.csv'):
+        with open('expenses.csv', "w", newline="") as new_file:
+            csv_reader = csv.DictWriter(new_file, fieldnames=HEADINGS)
+            csv_reader.writeheader()
+
     # Obtain portion of expenses user wants to access
     user_choice = show_menu()
 
@@ -39,7 +49,17 @@ def show_menu():
         
 # Allows user to add new expense
 def add_expenses():
-    pass
+    # Have user input expenses
+    type = input("Type of expense: ")
+    cost = input("Cost of expense: £")
+    desc = input("Description of expense: ")
+    # Open and write to the file
+    with open('expenses.csv', "a", newline="") as file:
+        csv_writer = csv.DictWriter(file, fieldnames=HEADINGS)
+        csv_writer.writerow({'type' : type, 
+                             'cost' : cost,
+                             'description' : desc,})
+
 
 # Allows user to view all expenses added
 def view_expenses():
