@@ -19,20 +19,21 @@ def main():
             csv_reader = csv.DictWriter(new_file, fieldnames=HEADINGS)
             csv_reader.writeheader()
 
+    while True:
     # Obtain portion of expenses user wants to access
-    user_choice = show_menu()
+        user_choice = show_menu()
 
-    # Call the function dependant on users choice
-    if user_choice == 1:
-        add_expenses()
-    elif user_choice == 2:
-        view_expenses()
-    elif user_choice == 3:
-        view_summary()
-    elif user_choice == 4:
-        delete_expenses()
-    elif user_choice == 5:
-        exit
+        # Call the function dependant on users choice
+        if user_choice == 1:
+            add_expenses()
+        elif user_choice == 2:
+            view_expenses()
+        elif user_choice == 3:
+            view_summary()
+        elif user_choice == 4:
+            delete_expenses()
+        elif user_choice == 5:
+            return
 
 # List menu options
 def show_menu():
@@ -81,7 +82,25 @@ def view_summary():
 
 # Allows user to delete previously added expense
 def delete_expenses():
-    pass
+    count = 1
+    print("Please enter the number of the row you want to delete: ")
+    # Show user all the entires
+    with open('expenses.csv', "r") as file:
+        csv_reader = csv.DictReader(file)
+        data = list(csv_reader)
+        for row in data:
+            print(f"{count}: {row['type']} - {row['cost']}")
+            count += 1
+    delete = int(input("Which row do you want to remove?: ")) - 1
+    # Create new data without the row
+    new_data = [row for index, row in enumerate(data) if index != delete]
+    # Rewrite updated content
+    with open('expenses.csv', "w", newline="") as new_file:
+        csv_writer = csv.DictWriter(new_file, fieldnames=HEADINGS)
+        csv_writer.writeheader()
+        csv_writer.writerows(new_data)
+    
+
 
 if __name__ == "__main__":
     main()
