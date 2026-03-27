@@ -70,7 +70,14 @@ def view_expenses():
 
 # Allows user to see summary of what has been added (counts, totals)
 def view_summary():
-    pass
+    with open('expenses.csv', "r") as file:
+        csv_reader = csv.DictReader(file)
+        count = 0
+        expense_costs = 0
+        for row in csv_reader:
+            count += 1
+            expense_costs += int(row['cost'])
+        print(f"Total entires: {count}\nTotal spend: £{expense_costs}")
 
 # Allows user to delete previously added expense
 def delete_expenses():
