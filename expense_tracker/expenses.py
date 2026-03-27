@@ -1,10 +1,3 @@
-"""
-TODO:
-3. Add Expenses - add input of type, cost, description - write to csv file
-4. View Expenses will open CSV and show contents
-5. View Summary will summarise expenses / amount of rows / totals
-6. Exit will close app
-"""
 import csv
 import os
 
